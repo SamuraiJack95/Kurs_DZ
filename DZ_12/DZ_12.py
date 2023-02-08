@@ -56,3 +56,42 @@
 #     f2.write(res)
 
 # zd_3
+
+# with open(file='sotona.txt', mode='r', encoding='UTF-8') as f1:
+#
+#     mas1 = f1.readlines()
+#     mas2 = mas1.pop()
+#     with open(file='sotona_nabiz.txt', mode='w', encoding='UTF-8') as f2:
+#         f2.writelines(mas1)
+#
+# print(mas1)
+
+# zd_4
+
+# mas2 = []
+#
+# with open(file='sotona.txt', mode='r', encoding='UTF-8') as f1:
+#     mas1 = f1.readlines()
+# for i in mas1:
+#     mas2.append(len(i))
+#
+# mas3 = max(mas2)
+#
+# print(mas2)
+# print(mas3)
+
+# zd_5
+
+count = 0
+with open(file='sotona.txt', mode='r', encoding='UTF-8') as f1:
+     mas1 = f1.readlines()
+
+
+word = input('введите слово')
+
+for ii in mas1:
+    words = ii.split()
+    for i in words:
+        if i == word:
+            count += 1
+print(count)
