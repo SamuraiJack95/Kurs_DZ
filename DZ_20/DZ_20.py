@@ -39,3 +39,4 @@ def get_ran():
     return 'Все чики-брики'
 
 print(get_ran())
+
