@@ -40,4 +40,5 @@ print('Введите число')
 # for i in range(mas+1):
 #     kok = lambda k,i, mas: k+1 for i in range(mas) if i % x == 0
 
+
 # print(kok(mas))
