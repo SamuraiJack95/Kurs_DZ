@@ -17,7 +17,10 @@ class ShoesModel:
     def __init__(self):
         self.filepath = 'db.txt'
         try:
+            # не понимаю как изменить название массива так чтобы небыло бесконечной интерации
             self.shoeses = json.load(open(self.filepath, 'rt', encoding= 'utf-8'))
+            for shoes in self.shoeses.values():
+                self.shoeses[shoes['type_shoes']] = Shoes(*shoes.values())
         except json.decoder.JSONDecodeError:
             self.shoeses = {}
         except FileNotFoundError:
@@ -32,7 +35,9 @@ class ShoesModel:
 
     def add_shoes(self, shoes):
         self.shoeses[shoes['тип обуви']] = Shoes(*shoes.values())
-        print(shoes.values())
+        for i in self.shoeses.items():
+            print(i[0], i[1])
+
         dict_shoeses = {shoes.type_shoes: shoes.__dict__ for shoes in self.shoeses.values()}
         json.dump(dict_shoeses, open(self.filepath, 'wt', encoding='utf-8'))
 
