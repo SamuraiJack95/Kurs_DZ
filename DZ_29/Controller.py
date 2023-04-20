@@ -21,3 +21,11 @@ class ShoesController:
         elif  answer == '2':
             shoeses = self.model.get_all_shoeses()
             self.view.print_all_shoeses(shoeses)
+        elif answer == '3':
+            shoes_name = self.view.get_user_shoes()
+            shoes = self.model.get_single_shoes(shoes_name)
+            self.view.show_single_shoes(shoes)
+        elif answer == '4':
+            shoes_name = self.view.get_user_shoes()
+            result_code = self.model.delete_shoes(shoes_name)
+            self.view.get_result_del(result_code)
