@@ -1,28 +1,5 @@
 import json
 
-# class Loadsave:
-#     def __init__(self):
-#         self.data = {}
-#         self.filepath = 'pip.txt'
-#
-#     def save(self):
-#         self.data[class]
-#     # def add_shoes(self, shoes):
-#     #     self.shoeses[shoes['тип обуви']] = Shoes(*shoes.values())
-#     #     # for i in self.shoeses.items():
-#     #     #     print(i[0], i[1])
-#     #
-#     #     dict_shoeses = {shoes.type_shoes: shoes.__dict__ for shoes in self.shoeses.values()}
-#     #     json.dump(dict_shoeses, open(self.filepath, 'wt', encoding='utf-8'))
-#
-#     def load(self):
-#         pass
-#
-#         # self.shoeses ={}
-#         #             self.shoesess = json.load(open(self.filepath, 'rt', encoding= 'utf-8'))
-#         #             for shoes in self.shoesess.values():
-#         #                 self.shoeses[shoes['type_shoes']] = Shoes(*shoes.values())
-#
 class Shape:
 
     def __init__(self, cor):
@@ -37,18 +14,18 @@ class Shape:
 
 
     def save(self, file_pip):
-        data = self.__dict__
-        with open(file_pip, "at") as write_file:
-            json.dump(data, write_file)
 
+        with open(file_pip, "at") as f:
+            json.dump({self.__class__.__name__:self.__dict__},f)
 
-    def load(self, file_pip):
-        with open(file_pip, "r") as read_file:
-            data = json.load(read_file)
-            for obj in data:
-                for atr in obj:
-                    if atr == self.cls:
-                        return __class__.__name__(*obj.values())
+    @staticmethod
+    def load(filename):
+        with open(filename, "r") as f:
+            obj = json.load(f)
+            cls_name = list(obj.keys())[0]
+            for subcls in Shape.__subclasses__():
+                if subcls.__name__ == cls_name:
+                    return subcls(**list(obj.values())[0])
 
 
 class Square(Shape):
@@ -78,10 +55,7 @@ a = Circle(4,5)
 b = Square(6,7)
 a.save('pip.txt')
 b.save('pip.txt')
-
-c = Square.load('pip.txt', Square)
-
-
+b.load('pip.txt')
 
 
 
