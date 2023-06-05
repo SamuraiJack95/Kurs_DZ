@@ -10,7 +10,12 @@ users= [{'name': 'andrey', 'email': 'andrey@gmail.com'},
 #     if tuy == 'gmail.com':
 #         print(users[u]['email'])
 
-for u in range(len(users)):
-    b = users[u]['email']
+# for u in range(len(users)):
+#     b = users[u]['email']
+#     if re.search('gmail.com', b):
+#         print(users[u]['email'])
+
+for u in users:
+    b = u['email']
     if re.search('gmail.com', b):
-        print(users[u]['email'])
+        print(u['email'])

@@ -9,21 +9,21 @@ users= [{'name': 'andrey', 'email': 'andrey@gmail.com'},
 
 
 html = """
-{%- macro printt(name, email) -%}
-    <print 'name: ' {{ name }} 'email: ' {{ email }}>
-{%- endmacro -%}
+{% macro printt(name, email) %}
+    <print 'name: ' name  'email: 'email >
+{% endmacro %}
 
 <p>
-{%- for u in range(len(users)) -%}
-    {{ b = users[u]['email'] }}
+{% for u in users %}
+    b = {{ u['email'] }}
     {% if re.search('gmail.com', b) %}
-            {% printt({{u['name']}}, {{u['email']}} %}
-    {% endif -%}  
-{% endfor -%}
-<p>
+        printt({{u['name']}}, {{u['email']}} 
+    {% endif %}  
+{% endfor %}
+</p>
 """
 
 
 tm = Template(html)
-msg = tm.render(users=users)
+msg = tm.render(users=users, re=re)
 print(msg)

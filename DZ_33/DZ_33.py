@@ -104,7 +104,7 @@ def move_fail(file_source, file_destination):
         shutil.move(file_source + g, file_destination)
 
 
-thd_1 = threading.Thread(target=move_fail, args=(file_source,file_destination))
+thd_1 = threading.Thread(target=move_fail, args=(file_source, file_destination))
 thd_1.start()
 print('programm is fin')
 
