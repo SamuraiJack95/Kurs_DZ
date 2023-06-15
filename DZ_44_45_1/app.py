@@ -1,7 +1,37 @@
-from flask import Flask, render_template, url_for, request, flash, session, redirect, abort
+import sqlite3
+import os
+
+from flask import Flask, render_template, url_for, request, flash, session, redirect, abort,g
+
+from DataBase import Database
+
+DATABASE = '/tmp/flsk.db'
+DEBUG = True
+SECRET_KEY = '14fmrmkndek4493lgttm'
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '14fmrmkndek4493lgttmdvk3297dovvm3m56m122mfkfpewotiv34kciw3ew'
+app.config.from_object(__name__)
+
+app.config.update(dict(DATABASE=os.path.join(app.root_path, 'flsk.db')))
+
+def connect_db():
+    con = sqlite3.connect(app.config['DATABASE'])
+    con.row_factory = sqlite3.Row
+    return con
+
+def create_db():
+    db = connect_db()
+    with open('C:/KursPython/Kurs_DZ/DZ_44_45_1/sq_db.sql', 'r') as f:
+        db.cursor().executescript(f.read())
+    db.commit()
+    db.close()
+
+def get_db():
+    if not hasattr(g, 'link_db'):
+        g.link_db = connect_db()
+    return g.link_db
+
+
 menu = [
     {'name': 'Главная', 'url': '/'},
     {'name': 'О нас', 'url': '/about'},
@@ -11,7 +41,24 @@ menu = [
 @app.route('/index')
 @app.route('/')
 def index():
-    return render_template('index.html', title='Главная', menu=menu)
+    db = get_db()
+    dbase = Database(db)
+    return render_template('index.html', title='Главная', menu=dbase.get_menu())
+@app.route('/add_post', methods=['POST', 'GET'])
+def add_post():
+    db = get_db()
+    dbase = Database(db)
+
+    if request.method == 'POST':
+        if len(request.form['title']) > 4 and len(request.form['text']) > 10:
+            res = dbase.add_post(request.form['title'], request.form['text'])
+            if res:
+                flash('Статья успешно добавлена', category='success')
+            else:
+                flash('Ошибка добавления статьи', category='error')
+        else:
+            flash('Ошибка добавления статьи')
+    return render_template('add_post.html', title='', menu=dbase.get_menu())
 
 @app.route('/about')
 def about():
@@ -55,4 +102,6 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
+
+create_db()

@@ -1,0 +1,22 @@
+{% extends 'basa.html' %}
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<hr>
+<h2>Список статьей</h2>
+<ul>
+    {% for p in posts %}
+    <li>
+        <p>
+            <a href="">{{ p.title }}</a>
+        </p>
+        <div class="announce">{{ p.text }}</div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
