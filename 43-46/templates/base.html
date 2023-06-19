@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block title %}
         {% if title %}
-        <title>Главная</title>
+        <title>Про Flask - {{ title }}</title>
         {% else %}
         <title>Про Flask</title>
         {% endif %}
     {% endblock %}
 </head>
 <body>
-{% block sps %}
+{% block content %}
     <ul class="menu">
         {% for m in menu %}
             <li>
@@ -26,11 +26,8 @@
     {% else %}
     <h1>Про Flask</h1>
     {% endif %}
-    {% endblock %}
 
-    {% block content %}
-
-    {% endblock %}
-    </div>
+{% endblock %}
+</div>
 </body>
 </html>

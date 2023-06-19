@@ -1,18 +1,22 @@
 body{
-    background-color: #f3f360;
+    background-color: #c3fbf7;
     margin: 0px;
     padding: 0px;
-
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .menu{
-    display:flex;
-    justify-content: normal;
-    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
     list-style: none;
-    background-color: #ffc4db;;
+    background: #0d100af2;
     padding: 20px;
-    margin-top: 0px;
+    margin-top: 0;
+
+}
+
+a{
+color: #95ff95;
 }
 
 .container{
@@ -32,7 +36,7 @@ body{
 }
 
 .chi{
-    max-width: 300px;
+    max-width: 350px;
     margin: 0px;
     padding: 20px;
     box-sizing: border-box;
@@ -71,3 +75,53 @@ body{
     border: 1px solid #FF5343;
     background: #FF9C9C;
 }
+
+ul{
+    list-style:none;
+    padding: 0;
+}
+
+p>a{
+    text-decoration:none;
+    color: #00adff;
+
+}
+
+li>p{
+    border: 1px solid #CCC;
+    padding: 10px, 20px;
+    background: #44044c;
+    height:30px;
+
+}
+li div{
+    border: 1px solid #CCC;
+    padding: 10px, 20px;
+    background: #44044c;
+    height:60px;
+}
+
+p.title{
+    margin: 0;
+    font-weight: bold;
+    background: gold;
+}
+
+div.title a{
+    display: block;
+}
+
+div.title:hover{
+    background: orange;
+}
+
+.announce{
+    margin-top: -1px;
+    background:#fd6fffa6;
+    margin-bottom: 40px;
+}
+
+.rightpic {
+    float: right; /* Выравнивание по правому краю */
+    margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
+   }

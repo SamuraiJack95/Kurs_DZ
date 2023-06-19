@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<hr>
+<h2>Список статей</h2>
+<ul>
+    {% for p in posts %}
+    <li>
+        <p class="title">
+            <a href="">{{ p.title }}</a>
+        </p>
+        <div class="announce">{{ p.text }}</div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

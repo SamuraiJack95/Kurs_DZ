@@ -12,9 +12,9 @@
     {% for p in posts %}
     <li>
         <p>
-            <a href="">{{ p.title }}</a>
+            <a href="{{ url_for('show_post', post_id=p.url )}}">{{ p.title }}</a>
         </p>
-        <div class="announce">{{ p.text }}</div>
+        <div class="announce">{{ p.text[:140] | striptags }} ...</div>
     </li>
     {% endfor %}
 </ul>
