@@ -1,0 +1,26 @@
+{% extends  'generator/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Генератор паролей</h1>
+    <form action="{% url 'password' %}">
+        <p>
+            <select name="length">
+                {% for i in lst %}
+                {% if i == 12 %}
+                <option value="{{ i }}" selected>{{ i }}</option>
+                {% else %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+                {% endfor %}
+            </select> количество символов
+        </p>
+        <p>
+            <input type="checkbox" value="uppercase"> Верхний регистр <br>
+            <input type="checkbox" value="numbers"> Цифры <br>
+            <input type="checkbox" value="special"> Спец. символы <br>
+        </p>
+        <input type="submit" value="Сгенерировать пароль">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends  'todo/base.html' %}
+
+{% block content %}
+<h2>{{ todo.title }}</h2>
+<p>{{ todo.memo }}</p>
+<p>{{ todo.created | date }}</p>
+<form action="currenttodos" method="post">
+    <button class="btn">Удалить</button>
+</form>
+{% endblock %}
