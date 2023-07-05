@@ -11,4 +11,4 @@ def index(request):
 def video_get(request):
     vid = Video.objects.all()
     wor = Works.objects.all()
-    return render(request, 'skills/works.html', {'vid': vid}, {'wor': wor})
+    return render(request, 'skills/works.html', {'vid': vid, 'wor': wor})

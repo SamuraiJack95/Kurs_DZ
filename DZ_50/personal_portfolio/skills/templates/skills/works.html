@@ -2,9 +2,14 @@
 {% load static %}
 
 {% block content %}
-
+ <img src="{{ project.image.url }}" alt="">
 <div class="img">
-    <img src="{% static 'skills/wc.jpg' %}" alt="">
+    <h4><a href="{{ projects.video.url }}">{{ video.title }}</a></h4>
+    <div>
+        <video class="video" controls preload="auto" width="600" height="400">
+            <source src="{{ projects.video.url }}" type="video/mp4"/>
+        </video>
+    </div>
 </div>
 
 {% endblock %}
