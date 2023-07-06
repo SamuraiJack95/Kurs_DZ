@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.index, name= 'index'),
     path('blog/', include('blog.urls')),
     path('works/', views.video_get, name='videoget'),
+    path('<int:work_id>/', views.detail, name='detail'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

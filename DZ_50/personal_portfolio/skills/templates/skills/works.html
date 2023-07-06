@@ -1,15 +1,20 @@
 {% extends 'skills/base.html' %}
-{% load static %}
 
 {% block content %}
- <img src="{{ project.image.url }}" alt="">
-<div class="img">
-    <h4><a href="{{ projects.video.url }}">{{ video.title }}</a></h4>
-    <div>
-        <video class="video" controls preload="auto" width="600" height="400">
-            <source src="{{ projects.video.url }}" type="video/mp4"/>
-        </video>
+
+<h1>Работа</h1>
+<h2 class="count">Постов: {{ wor.count }}</h2>
+{% for wo in wor %}
+<div class="element">
+    <h2 class="top">
+        <a href="{% url 'wor:detail' wo.id %}">
+            {{ wo.title }}
+        </a>
+    </h2>
+    <div class="blog_text">
+        <h4>{{ wo.date | date:'d.m.Y' }}</h4>
+        <p>{{ wo.description | striptags | truncatechars:160 }}</p>
     </div>
 </div>
-
+{% endfor %}
 {% endblock %}
