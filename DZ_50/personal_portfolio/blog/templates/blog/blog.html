@@ -3,9 +3,9 @@
 {% block content %}
 
 <h1>Блог</h1>
-<h2 class="count">Постов: {{ blog.count }}</h2>
+<h2 class="countt">Постов: {{ blog.count }}</h2>
 {% for blo in blog %}
-<div class="element">
+<div class="elementt">
     <h2 class="top">
         <a href="{% url 'blog:detail' blo.id %}">
             {{ blo.title }}

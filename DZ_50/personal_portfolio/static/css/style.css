@@ -117,3 +117,22 @@ body{
     tex-decoration: none;
 }
 
+.omg{
+    text-align: center;
+    margin-bottom: 60px;
+    height: 500px;
+    width: 90%;
+    border: 6px solid #FFF
+}
+
+.amg img{
+    width: 600px;
+}
+
+.elementt, .countt{
+    width: 700px;
+    background-color: lightyellow;
+    text-align: center;
+    border: 6px solid #FFF;
+    margin: 20px 0;
+}

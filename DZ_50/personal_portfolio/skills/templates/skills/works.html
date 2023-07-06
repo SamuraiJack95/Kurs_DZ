@@ -1,19 +1,23 @@
 {% extends 'skills/base.html' %}
-
+{% load static %}
 {% block content %}
 
-<h1>Работа</h1>
-<h2 class="count">Постов: {{ wor.count }}</h2>
+<div class="omgg">
+    <img class="omg" src="{% static 'skills/gig.jpg' %}" alt="">
+</div>
+<h1>Работы</h1>
+<h2 class="countt">Постов: {{ wor.count }}</h2>
 {% for wo in wor %}
-<div class="element">
+<div class="elementt">
     <h2 class="top">
-        <a href="{% url 'wor:detail' wo.id %}">
             {{ wo.title }}
-        </a>
     </h2>
+    <div class="amg">
+        <img src="{{ wo.image.url }}" alt="">
+    </div>
     <div class="blog_text">
         <h4>{{ wo.date | date:'d.m.Y' }}</h4>
-        <p>{{ wo.description | striptags | truncatechars:160 }}</p>
+        <p>{{ wo.description | striptags }}</p>
     </div>
 </div>
 {% endfor %}
