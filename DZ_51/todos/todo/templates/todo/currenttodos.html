@@ -10,9 +10,11 @@
             {{ todo.title }}
         {% endif %}</a>
 
-        {% if todo.memo %}
-        - {{ todo.memo }}
-        {% endif %}
+       <div>
+           {% if todo.memo %}
+           - {{ todo.memo }}
+           {% endif %}
+       </div>
     </li>
     {% endfor %}
 </ul>

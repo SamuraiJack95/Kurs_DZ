@@ -1,0 +1,21 @@
+{% extends  'skills/base.html' %}
+{% block content %}
+<h1>Задачи:</h1>
+<ul>
+    {% for todo in todos %}
+    <li>
+        <a href="{{ todo.get_absolute_url }}">{% if todo.importand %}
+        <b>{{ todo.title }}</b>
+        {% else %}
+            {{ todo.title }}
+        {% endif %}</a>
+
+       <div>
+           {% if todo.memo %}
+           - {{ todo.memo }}
+           {% endif %}
+       </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

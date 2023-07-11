@@ -23,11 +23,20 @@ from skills import views
 # app_name = 'work'
 
 urlpatterns = [
+    path('signup/', views.signupuser, name='signupuser'),
+    path('login/', views.loginuser, name='loginuser'),
+    path('logout/', views.logoutuser, name='logoutuser'),
+
     path('admin/', admin.site.urls),
-    path('', views.index, name= 'index'),
+    path('', views.home, name='home'),
+    path('index/', views.index, name='index'),
     path('blog/', include('blog.urls')),
     path('works/', views.video_get, name='videoget'),
     path('<int:work_id>/', views.detail, name='detail'),
+    path('create/', views.createskills, name='createskills'),
+    path('skills/<int:skills_pk>', views.viewskills, name='viewtodo'),
+    path('skills/<int:skills_pk>/delete', views.deleteskills, name='deleteskills'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
