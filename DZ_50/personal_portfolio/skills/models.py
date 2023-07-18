@@ -7,7 +7,7 @@ from django.urls import reverse
 class Skills(models.Model):
     title = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=250, blank=True)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to=efe, blank=True)
     url = models.URLField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
